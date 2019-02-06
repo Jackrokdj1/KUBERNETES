@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: wildfly-deployment
+  labels:
+    app: wildfly
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wildfly
+  template:
+    metadata:
+      labels:
+        app: wildfly
+    spec:
+      containers:
+      - name: wildfly
+        image: wildfly:10.0.0.Final
+        ports:
+        - containerPort: 8080
